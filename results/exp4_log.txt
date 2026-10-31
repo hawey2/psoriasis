@@ -1,0 +1,28 @@
+variants with isoform-level scores: 5762 | multi-isoform: 4283
+multi-isoform variants analysed: 4283
+all multi-isoform                  n= 4283  median score range=0.030  mean=0.066  class-call flips across isoforms=13.6%
+mechanism=LOF                      n=  865  median score range=0.041  mean=0.098  class-call flips across isoforms=17.0%
+mechanism=GOF                      n= 2329  median score range=0.027  mean=0.056  class-call flips across isoforms=12.3%
+mechanism=MIXED                    n= 1089  median score range=0.028  mean=0.063  class-call flips across isoforms=13.7%
+psoriasis core 5 genes             n=  726  median score range=0.037  mean=0.080  class-call flips across isoforms=16.1%
+  AP1S3                            n=   10  median score range=0.083  mean=0.203  class-call flips across isoforms=40.0%
+  CARD14                           n=  614  median score range=0.038  mean=0.082  class-call flips across isoforms=16.6%
+  IL36RN                           n=   48  median score range=0.033  mean=0.065  class-call flips across isoforms=16.7%
+  SERPINA3                         n=   54  median score range=0.030  mean=0.048  class-call flips across isoforms=5.6%
+ClinVar pathogenic only            n=  200  median score range=0.047  mean=0.084  class-call flips across isoforms=17.5%
+ClinVar benign only                n=  263  median score range=0.019  mean=0.065  class-call flips across isoforms=11.4%
+ClinVar VUS/conflicting only       n= 3820  median score range=0.030  mean=0.065  class-call flips across isoforms=13.5%
+
+largest isoform disagreements in psoriasis core genes:
+  CARD14    R386S     7 isoforms  score 0.080-0.984  ClinVar=Uncertain_significance
+  CARD14    A367P     7 isoforms  score 0.077-0.973  ClinVar=Uncertain_significance
+  CARD14    K382E     7 isoforms  score 0.066-0.925  ClinVar=Uncertain_significance
+  CARD14    F390L     7 isoforms  score 0.056-0.915  ClinVar=Uncertain_significance
+  CARD14    D383Y     7 isoforms  score 0.099-0.893  ClinVar=Uncertain_significance
+  CARD14    S483P     7 isoforms  score 0.085-0.816  ClinVar=Uncertain_significance
+  CARD14    P831L     3 isoforms  score 0.100-0.791  ClinVar=Uncertain_significance
+  CARD14    A837G     3 isoforms  score 0.072-0.721  ClinVar=Uncertain_significance
+  CARD14    R386C     7 isoforms  score 0.099-0.664  ClinVar=Uncertain_significance
+  CARD14    G822D     3 isoforms  score 0.090-0.646  ClinVar=Uncertain_significance
+  AP1S3     R33W      6 isoforms  score 0.263-0.793  ClinVar=Benign/Likely_benign
+  AP1S3     S64G      4 isoforms  score 0.342-0.830  ClinVar=Uncertain_significance

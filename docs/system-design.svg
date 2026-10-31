@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 760" width="1180" height="760" font-family="ui-sans-serif,-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#111827;font-size:13px}
+    .ts{fill:#4b5563;font-size:11px}
+    .h{fill:#111827;font-size:14px;font-weight:600}
+    .lane{fill:#f9fafb;stroke:#e5e7eb;stroke-width:1;rx:10}
+    .lb{fill:#6b7280;font-size:11px;font-weight:600;letter-spacing:.08em}
+    .bx{stroke-width:1.5;rx:8}
+    .edge{stroke:#6b7280;stroke-width:1.6;fill:none;marker-end:url(#a)}
+    .edged{stroke:#b45309;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#ad)}
+    .el{fill:#6b7280;font-size:10.5px}
+    .why{fill:#b45309;font-size:11px;font-style:italic}
+  </style>
+  <rect width="1180" height="760" fill="#ffffff"/>
+  <text x="32" y="38" class="h" font-size="19">Mechanism-aware VEP for the psoriasis spectrum</text>
+  <text x="32" y="59" class="ts">Orange notes mark the pilot result that motivates each component (see docs/technical-report.md)</text>
+
+  <!-- lane 1 inputs -->
+  <rect class="lane" x="32" y="82" width="250" height="300"/>
+  <text x="48" y="104" class="lb">INPUTS</text>
+  <rect class="bx" x="48" y="116" width="218" height="52" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="62" y="138" class="t">Variant (GRCh38)</text>
+  <text x="62" y="155" class="ts">coding, splice-region or non-coding</text>
+  <rect class="bx" x="48" y="182" width="218" height="52" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="62" y="204" class="t">Transcript set</text>
+  <text x="62" y="221" class="ts">MANE + alternative isoforms</text>
+  <rect class="bx" x="48" y="248" width="218" height="66" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="62" y="270" class="t">Skin expression prior</text>
+  <text x="62" y="287" class="ts">lesional / non-lesional</text>
+  <text x="62" y="302" class="ts">keratinocyte scRNA-seq</text>
+  <rect class="bx" x="48" y="328" width="218" height="40" fill="#f3f4f6" stroke="#d1d5db"/>
+  <text x="62" y="353" class="t">Gene mechanism prior</text>
+
+  <!-- lane 2 routing -->
+  <rect class="lane" x="306" y="82" width="238" height="300"/>
+  <text x="322" y="104" class="lb">ROUTING</text>
+  <rect class="bx" x="322" y="130" width="206" height="66" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="336" y="152" class="t">Isoform selector</text>
+  <text x="336" y="169" class="ts">weights transcripts by</text>
+  <text x="336" y="184" class="ts">expression in lesional skin</text>
+  <text x="322" y="214" class="why">1 in 6 variants flips its class</text>
+  <text x="322" y="229" class="why">call between isoforms (Exp 4)</text>
+  <rect class="bx" x="322" y="246" width="206" height="62" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="336" y="268" class="t">Variant class router</text>
+  <text x="336" y="285" class="ts">missense vs splice/non-coding</text>
+  <text x="322" y="330" class="why">IL36RN c.115+6T&gt;C is 44% of</text>
+  <text x="322" y="345" class="why">Vietnamese GPP and no missense</text>
+  <text x="322" y="360" class="why">predictor scores it at all</text>
+
+  <!-- lane 3 encoders -->
+  <rect class="lane" x="568" y="82" width="238" height="300"/>
+  <text x="584" y="104" class="lb">ENCODERS (FROZEN TRUNKS)</text>
+  <rect class="bx" x="584" y="122" width="206" height="62" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="598" y="144" class="t">Protein branch</text>
+  <text x="598" y="161" class="ts">ESM1b / ESM2 650M</text>
+  <rect class="bx" x="584" y="196" width="206" height="62" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="598" y="218" class="t">DNA branch</text>
+  <text x="598" y="235" class="ts">SpliceBERT / NT-v2</text>
+  <rect class="bx" x="584" y="282" width="206" height="76" fill="#ecfdf5" stroke="#34d399"/>
+  <text x="598" y="304" class="t">Siamese delta</text>
+  <text x="598" y="321" class="ts">wild-type vs mutant,</text>
+  <text x="598" y="336" class="ts">shared weights, PLLR</text>
+  <text x="598" y="351" class="ts">(DYNA, Nat Mach Intell 2025)</text>
+
+  <!-- lane 4 heads -->
+  <rect class="lane" x="830" y="82" width="318" height="300"/>
+  <text x="846" y="104" class="lb">MECHANISM-CONDITIONED HEADS</text>
+  <rect class="bx" x="846" y="118" width="286" height="44" fill="#fdf2f8" stroke="#f9a8d4"/>
+  <text x="860" y="145" class="t">Mechanism gate — p(GOF | variant, gene)</text>
+  <rect class="bx" x="846" y="174" width="137" height="44" fill="#fdf2f8" stroke="#f9a8d4"/>
+  <text x="860" y="201" class="t">LOF head</text>
+  <rect class="bx" x="995" y="174" width="137" height="44" fill="#fdf2f8" stroke="#f9a8d4"/>
+  <text x="1009" y="201" class="t">GOF / DN head</text>
+  <rect class="bx" x="846" y="232" width="286" height="62" fill="#fdf2f8" stroke="#ec4899"/>
+  <text x="860" y="254" class="t">Per-mechanism calibration</text>
+  <text x="860" y="271" class="ts">local PPV &#8594; ACMG PP3 / BP4 strength</text>
+  <text x="846" y="318" class="why">Mechanism-specific thresholds raise GOF</text>
+  <text x="846" y="333" class="why">sensitivity 0.258 &#8594; 0.495 at matched 5%</text>
+  <text x="846" y="348" class="why">false-positive rate (Exp 2)</text>
+
+  <!-- output -->
+  <rect class="bx" x="306" y="424" width="500" height="92" fill="#eef2ff" stroke="#818cf8"/>
+  <text x="326" y="450" class="h">Output</text>
+  <text x="326" y="472" class="t">score &#183; predicted mechanism &#183; ACMG evidence strength</text>
+  <text x="326" y="492" class="t">&#183; the isoform the call depends on &#183; stability flag</text>
+  <text x="326" y="509" class="ts">reported per variant, not only as a cohort-level AUROC</text>
+
+  <!-- robustness -->
+  <rect class="bx" x="846" y="424" width="302" height="92" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="866" y="450" class="h">Robustness audit</text>
+  <text x="866" y="472" class="t">isoform swap &#183; context shift &#183; ancestry shift</text>
+  <text x="866" y="490" class="ts">reported as stability, not as an attack result</text>
+  <text x="866" y="507" class="ts">suite adapted from GenoArmory (2025)</text>
+
+  <!-- benchmark strip -->
+  <rect class="lane" x="32" y="556" width="1116" height="172"/>
+  <text x="48" y="578" class="lb">EVALUATION — HELD OUT BY GENE, STRATIFIED BY MECHANISM</text>
+  <rect class="bx" x="48" y="592" width="256" height="118" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="62" y="614" class="t">Benchmark sets</text>
+  <text x="62" y="633" class="ts">ClinVar psoriasis-spectrum panel</text>
+  <text x="62" y="649" class="ts">(30 genes, 6,427 scored missense)</text>
+  <text x="62" y="665" class="ts">IL36RN functional set, 30 variants</text>
+  <text x="62" y="681" class="ts">CARD14 NF-&#954;B reporter variants</text>
+  <text x="62" y="697" class="ts">Southeast Asian GPP cohorts</text>
+  <rect class="bx" x="320" y="592" width="256" height="118" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="334" y="614" class="t">Baselines</text>
+  <text x="334" y="633" class="ts">AlphaMissense &#183; ESM1b &#183; EVE</text>
+  <text x="334" y="649" class="ts">REVEL &#183; CADD &#183; PrimateAI-3D</text>
+  <text x="334" y="665" class="ts">GPN-MSA &#183; AlphaGenome &#183; Evo 2</text>
+  <text x="334" y="681" class="ts">LoGoFunc (mechanism-aware)</text>
+  <text x="334" y="697" class="ts">DYNA re-fit on psoriasis genes</text>
+  <rect class="bx" x="592" y="592" width="256" height="118" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="606" y="614" class="t">Metrics</text>
+  <text x="606" y="633" class="ts">AUROC / AUPRC, bootstrap CIs</text>
+  <text x="606" y="649" class="ts">sensitivity at matched FPR,</text>
+  <text x="606" y="665" class="ts">stratified by mechanism</text>
+  <text x="606" y="681" class="ts">VUS resolution rate</text>
+  <text x="606" y="697" class="ts">calibration error per stratum</text>
+  <rect class="bx" x="864" y="592" width="252" height="118" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="878" y="614" class="t">Guards against circularity</text>
+  <text x="878" y="633" class="ts">gene-held-out splits</text>
+  <text x="878" y="649" class="ts">date-held-out ClinVar split</text>
+  <text x="878" y="665" class="ts">functional assays as the</text>
+  <text x="878" y="681" class="ts">primary label where available</text>
+  <text x="878" y="697" class="ts">(Livesey &amp; Marsh 2025 guidance)</text>
+
+  <!-- edges -->
+  <path class="edge" d="M266 142 H300 Q312 142 312 160 V262 Q312 272 322 272"/>
+  <path class="edge" d="M266 208 H294 Q306 208 306 170 Q306 160 322 160"/>
+  <path class="edge" d="M266 281 H290 Q306 281 306 176 Q306 164 322 164"/>
+  <path class="edge" d="M266 348 H286 Q300 348 300 180 Q300 150 846 140" opacity="0.55"/>
+  <path class="edge" d="M425 196 V240"/>
+  <path class="edge" d="M528 262 H556 Q568 262 568 180 Q568 153 584 153"/>
+  <path class="edge" d="M528 286 H552 Q568 286 568 240 Q568 227 584 227"/>
+  <path class="edge" d="M687 184 V278"/>
+  <path class="edge" d="M687 258 V278"/>
+  <path class="edge" d="M790 318 H812 Q830 318 830 148 Q830 140 846 140"/>
+  <path class="edge" d="M914 162 V170"/>
+  <path class="edge" d="M1063 162 V170"/>
+  <path class="edge" d="M914 218 V228"/>
+  <path class="edge" d="M1063 218 V228"/>
+  <path class="edge" d="M989 294 V360 Q989 400 900 410 Q806 420 806 466"/>
+  <path class="edged" d="M1035 294 V414"/>
+  <path class="edged" d="M996 470 H812"/>
+  <path class="edge" d="M556 516 V556" opacity="0.6"/>
+</svg>

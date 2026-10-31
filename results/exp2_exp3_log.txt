@@ -1,0 +1,12 @@
+labelled missense with residue position: 810
+
+=== EXPERIMENT 2: mechanism-conditional calibration of AlphaMissense (5-fold CV, FPR target 5%) ===
+LOF    n= 143  global-threshold sens=0.793 (FPR 0.043)   mechanism-threshold sens=0.793 (FPR 0.043)
+GOF    n= 212  global-threshold sens=0.258 (FPR 0.009)   mechanism-threshold sens=0.495 (FPR 0.042)
+MIXED  n= 455  global-threshold sens=0.798 (FPR 0.076)   mechanism-threshold sens=0.733 (FPR 0.045)
+
+=== EXPERIMENT 3: does 1D positional clustering add signal on GOF genes? (5-fold CV) ===
+GOF-gene labelled missense n=212 (P=93, B=119) over genes ['CARD14', 'NLRP1', 'NLRP3', 'NOD2']
+AlphaMissense alone      AUROC=0.906
+positional clustering    AUROC=0.909
+AM + positional (logreg) AUROC=0.912
